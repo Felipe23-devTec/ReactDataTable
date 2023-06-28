@@ -1,1 +1,10 @@
-
+body{
+  margin: 0px;
+}
+.img-avatar{
+  max-width:  30px;
+  border-radius: 30px;
+}
+.m-left{
+  margin-left: 10px;
+}
