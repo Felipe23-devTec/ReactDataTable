@@ -12,6 +12,7 @@ function App() {
   const [data, setData] =  useState([]);
   const [totalRows,setTotalRows] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const columns = [
     {
         name: 'Avatar',
@@ -95,12 +96,29 @@ function App() {
     return row.id === 3;
   }
   useEffect(() =>{
-    ListarDadosApi(1);
-  }, []);
-  
+    if(searchQuery.length > 0){
+      setTotalRows(11);
+      handleSearch()
+    }else{
+      ListarDadosApi(1);
+    }
+  }, [searchQuery]);
+  function handleSearch() {
+    
+    setData(dados);
+    
+  }
   return (
     <div className="App">
+      
       <h1>Consulta Usuários</h1>
+      <div>
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+      </div>
       <button onClick={handleClearRows}>Limpar seleção</button>
       <button onClick={handleExcluir}>Excluir</button>
       <DataTable
