@@ -96,7 +96,7 @@ function App() {
     return row.id === 3;
   }
   useEffect(() =>{
-    if(searchQuery.length > 0){
+    if(searchQuery.length > 0 && searchQuery.length > 3){
       setTotalRows(11);
       handleSearch()
     }else{
